@@ -6,16 +6,18 @@
 
   <body>
     <div id=0>
-      <p>2-4</p>
-      <img id="up" class="img" src="UpOn.png">
-      <img id="down" class="img" src="DownOn.png">
+      2-3
+      <img id="up" class="img" src="{{ upOn }}" height=5% width=5%>
+      <img id="down" class="img" src="{{ downOn }}" height=5% width=5%>
     </div>
     <br>
-    <div id=1>
-      <p>2-3</p>
-      <img id="up" class="img" src="UpOn.png">
-      <img id="down" class="img" src="DownOn.png">
+    {% for n in range(6) %}
+    <div id={{n +1}}>
+      {{n + 2}}-{{n + 4}}
+      <img id="up" class="img" src="{{ upOff }}" height=5% width=5%>
+      <img id="down" class="img" src="{{ downOff }}" height=5% width=5%>
     </div>
+    {% endfor %}
     <script src="test.js"></script>
   </body>
 </html>
