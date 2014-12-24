@@ -5,11 +5,7 @@ app = Flask(__name__)
 @app.route("/home")
 @app.route("/") 
 def home():
-    upOn = "static/img/UpOn.png"
-    upOff = "static/img/UpOff.png"
-    downOn = "static/img/DownOn.png"
-    downOff = "static/img/DownOff.png"
-    return render_template("test.html",upOn=upOn,upOff=upOff,downOn=downOn,downOff=downOff);
+    return render_template("test.html");
 
 if __name__=="__main__":
     app.debug=True
