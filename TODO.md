@@ -6,7 +6,6 @@ TODO
  - [x] Build Team
  - [x] Decide on Idea
  - [x] Flesh Out idea
- - [ ]
 
 
 
@@ -14,10 +13,10 @@ TODO
  - [x] Order All Parts (check when recieved) `HARDWARE`
     - [x] Arduino
     - [x] RPi
-    - [ ] Radio Modules
+    - [x] Radio Modules
     - [x] Jumper Cables
-    - [ ] Rotary Encoders
- - [ ] Get hardware proof of concept working at home
+    - [ ] Rotary Encoders *Note: These might take some time to come so I got an alternateve...*
+ - [x] Get hardware proof of concept working at home
  - [ ] Code Website
     - [ ] Javascript to recieve escilator data
     - [ ] Visual output to show when stuff works/doesnt (SVG?)
@@ -25,15 +24,16 @@ TODO
     - [ ] Make pretty :grin:
     - [ ] Build Database `BACKEND`
  - [x] Research RPi Connectivity `HARDWARE`
- - [ ] Get tracker
+ - [x] Get tracker
 
 
  ####Before 1/9
  - [ ] Get arduino installed on 3-5 `HARDWARE`
- - [ ] Get arduino communicating with RPi `HARDWARE`
+ - [x] Get arduino communicating with RPi `HARDWARE`
  - [ ] Get RPi communicating with website `HARDWARE`
  - [ ] Make website respond to RPi post requests `BACKEND`
  - [ ] Make graphics show changes in state `FRONTEND`
+ - [ ] Uptime page?? Checkout 
 
 
  ####Before Due
