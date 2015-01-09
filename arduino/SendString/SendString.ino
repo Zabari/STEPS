@@ -1,16 +1,35 @@
+//////Libraries
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <RF24_config.h>
 #include <RotaryEncoder.h>;
-int val = 0;
-RotaryEncoder encoder1(A0,A1,5,6,3000);
-RotaryEncoder encoder2(A4,A5,5,6,3000);
 
+
+//////Declarations
+/// Globals
+int msg[1];
+int val = 0;
 unsigned long lastMove1 = 0;
 unsigned long lastMove2 = 0;
 boolean on1 = false;
 boolean on2 = false;
 
-void setup()
-{  
+/// Radios
+RF24 radio(9,10);
+const uint64_t pipe = 0xE8E8F0F0E1LL; //Out Pipe
+
+/// Rotary Encoders
+RotaryEncoder encoder1(A0,A1,5,6,3000);
+RotaryEncoder encoder2(A4,A5,5,6,3000);
+
+
+///////////////////////////////////////////////////
+
+void setup(void){
   Serial.begin(57600);
+  radio.begin();
+  radio.openWritingPipe(pipe);
   
   //Set pin 7 as a faux ground, b/c the other 2 are used.
   pinMode(7,OUTPUT);
@@ -57,11 +76,31 @@ void loop()
     // Escilator is 4 for up and 5 down for 5, send 
      Serial.println("Sending data...");
      String data = "{4: " + String(on1) + ", 5: " + String(on2) + "}" ;
+     sendMsg(data);
      Serial.println(data);
      delayMicroseconds(50);
 
   }
   
   delayMicroseconds(50);
+}
+
+
+void sendMsg(String sendStr){
+  String message = sendStr;
+  int messageSize = message.length();
+  for (int i = 0; i < messageSize; i++) {
+    int charToSend[1];
+    charToSend[0] = message.charAt(i);
+    radio.write(charToSend,1);
+  }  
+  //send the 'terminate string' value...  
+  msg[0] = 2; 
+  radio.write(msg,1);
+
+  radio.powerDown(); 
+  delay(1000);
+  radio.powerUp();
+  Serial.println("Sent String Successfully. Contents: " + message);
 }
 
