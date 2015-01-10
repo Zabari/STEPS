@@ -4,8 +4,16 @@
 # Credits to python port of nrf24l01, Joao Paulo Barrac & maniacbugs original c library
 
 from nrf24 import NRF24
-import time
+import time, requests, json
 from time import gmtime, strftime
+
+
+oldStates = []
+newStates = []
+
+for n in range(12):
+    oldStates.append(False)
+    newStates.append(False)
 
 pipes = [[0xf0, 0xf0, 0xf0, 0xf0, 0xe1], [0xf0, 0xf0, 0xf0, 0xf0, 0xd2]]
 
@@ -26,6 +34,27 @@ radio.stopListening()
 radio.printDetails()
 radio.startListening()
 
+def getData(s):# format of s: {4:1, 5:0}  
+    e1,e2,v1,v2 = int(s[1:s.find(':')]),int(s[s.find(' '):s.rfind(':')]),int(s[s.find(':')+1:s.find(',')]),int(s[s.rfind(':')+1:s.rfind('}')])
+    oldStates[e1],oldStates[e2] = newStates[e1],newStates[e2]
+    newStates[e1],newStates[e2] = bool(v1),bool(v2)
+
+def sendData():
+    dataOut = []
+    for n in range(len(oldStates)):
+        if oldStates[n] != newStates[n]:
+            t = time.time()
+            state = newStates[n]
+            print "state %i changed to %d at time %d" % (n, state, t)
+            dataOut.append([n,state,t])
+    
+    if dataOut:
+    #if non-empty, send dataOut to server
+        headers = {'content-type': 'application/json'}
+        data = json.dumps({'data':dataOut})
+        print data
+        r = requests.post("http://0.0.0.0:8000/data", data=data, headers=headers)# replace with server address
+
 while True:
     pipe = [0]
     while not radio.available(pipe, True):
@@ -34,4 +63,5 @@ while True:
     radio.read(recv_buffer)
     out = ''.join(chr(i) for i in recv_buffer)
     print out
-    
+    getData(out)
+    sendData()
