@@ -6,6 +6,7 @@
 from nrf24 import NRF24
 import time, requests, json
 from time import gmtime, strftime
+import ast
 
 
 oldStates = []
@@ -34,10 +35,18 @@ radio.stopListening()
 radio.printDetails()
 radio.startListening()
 
-def getData(s):# format of s: {4:1, 5:0}  
-    e1,e2,v1,v2 = int(s[1:s.find(':')]),int(s[s.find(' '):s.rfind(':')]),int(s[s.find(':')+1:s.find(',')]),int(s[s.rfind(':')+1:s.rfind('}')])
+def getData(s):# format of s: {4:1, 5:0}
+#    data = ast.literal_eval(s)
+ #   e1 = data.keys()[0]
+  #  e2 = data.keys()[0]
+   # v1 = data[e1]
+    #v2 = data[e2]
+    e1,e2,v1,v2 = int(s[1]), int(s[7]), int(s[4]), int(s[10])
+#    #e1,e2,v1,v2 = int(s[1:s.find(':')]),int(s[s.find(' '):s.rfind(':')]),int(s[s.find(':')+1:s.find(',')]),int(s[s.rfind(':')+1:s.rfind('}')])
+
     oldStates[e1],oldStates[e2] = newStates[e1],newStates[e2]
     newStates[e1],newStates[e2] = bool(v1),bool(v2)
+
 
 def sendData():
     dataOut = []
@@ -53,7 +62,7 @@ def sendData():
         headers = {'content-type': 'application/json'}
         data = json.dumps({'data':dataOut})
         print data
-        r = requests.post("http://0.0.0.0:8000/data", data=data, headers=headers)# replace with server address
+        r = requests.post("http://104.236.94.176/newData", data=data, headers=headers)# replace with server address
 
 while True:
     pipe = [0]
@@ -61,7 +70,7 @@ while True:
         time.sleep(1000/1000000.0)
     recv_buffer = []
     radio.read(recv_buffer)
-    out = ''.join(chr(i) for i in recv_buffer)
+    out = str(''.join(chr(i) for i in recv_buffer))
     print out
     getData(out)
     sendData()
