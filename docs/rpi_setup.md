@@ -1,7 +1,15 @@
-#Raspberry Pi Setup
+# Raspberry Pi Setup
 
+### Software
+Download the Raspberry Pi GPIO Drivers:
 
-###Pinout
+```
+ sudo apt-get update
+ sudo apt-get dist-upgrade
+ sudo apt-get install python-rpi.gpio python3-rpi.gpio
+```
+
+### Pinout
 
 | nrf24l01 | Raspberry Pi |
 |----------|--------------|
