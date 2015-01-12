@@ -1,5 +1,6 @@
 from flask import Flask,render_template
 import json, requests
+
 '''
 Add import statement for Zabari's server code
 I'll assume module is called `server` and has methods:
@@ -31,11 +32,10 @@ def newData():
         server.updateDatabase(data)
 
 # JS gets updates from getData
-@app.route("/getData", methods = ["POST"])
-def newData():
-    if request.method == "POST":
-        data = server,fetchData()
-        server.updateDatabase(data)
+@app.route("/getData")
+def getData():
+    data = server.fetchAll()
+    return json.dumps(data)
 
 if __name__=="__main__":
     app.debug=True
