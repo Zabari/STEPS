@@ -8,8 +8,12 @@ I'll assume module is called `server` and has methods:
          value is dictionary of data. "Status" key contains status
          of each escalator, and we can easily add more data fields
          to each escalator.
-    fetchData()
+    fetchData(EscalatorName)
+          returns nested dictionary with single key Escalator Name, and then
+          "status or whatever.
+    fetchAll()
         returns same format as above: Dictionary<String:Dictionary>
+        x = { "4-6": {"status":"running"}}  x{"4-6":}
 '''
 
 app = Flask(__name__)
