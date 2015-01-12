@@ -1,0 +1,64 @@
+@font-face {
+    font-family: roadGeek;
+    src: url(sansation_light.woff);
+}
+
+@font-face {
+    font-family: 'Roadgeek 2005 Series C';
+    src: url('/static/fonts/Roadgeek 2005 Series C.eot');
+    src: local('☺'), url('/static/fonts/Roadgeek 2005 Series C.woff') format('woff'), url('/static/fonts/Roadgeek 2005 Series C.ttf') format('truetype'), url('/static/fonts/Roadgeek 2005 Series C.svg') format('svg');
+}
+
+body {
+background-color: #333;
+padding-top: 85px;
+}
+
+h1 {
+	font-size: 100px;
+	color: white;
+    transform: translateY(25%);
+}
+
+#justified {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute;
+}
+
+.panel{
+	background-color: #47484B;
+	border-color: #505154;
+
+
+}
+
+.panel-body{
+    font-family:'Roadgeek 2005 Series C',Sans-Serif;
+}
+
+.statusimg {
+    width: 30%;
+    height: auto;
+    vertical-align: middle;
+    max-width: 185px;
+    /*transform: translateY(-15%);*/
+    }
+
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+
+}
+
+
+.vcenter {
+    position: relative;
+    /*top: 50%;*/
+    /*transform: translateY(-10px);*/
+}
