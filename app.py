@@ -1,5 +1,5 @@
 from flask import Flask,render_template
-import json, requests
+import json
 
 '''
 Add import statement for Zabari's server code
