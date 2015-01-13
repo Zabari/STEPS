@@ -31,9 +31,15 @@ h1 {
 .panel{
 	background-color: #47484B;
 	border-color: #505154;
-
-
 }
+
+.panel-clear{
+    background-color: #333;
+    border-color: #333;
+    color: white;
+    
+}
+
 
 .panel-body{
     font-family:'Roadgeek 2005 Series C',Sans-Serif;
