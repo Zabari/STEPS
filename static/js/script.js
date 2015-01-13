@@ -22,6 +22,30 @@ function setOFF(id) {
   path.setAttribute("fill", "red");
 };
 
+// Fetch data from server and update page
+var reloadData = function() {
+    $.getJSON("/getData", function(data) {
+        updatePage(data);
+    } );
+};
+
+// Given data, update page
+var updatePage = function(escalator_status) {
+    // Get the escalator names delivered in the data
+    var escalator_names = Object.keys(escalator_status);
+    var data, _status;
+    // For every escalator, run either `setON` or `setOFF`
+    for (var escalator_name in escalator_names) {
+        data = escalator_status[escalator_name];
+        _status = data.status;
+        if (_status)
+            setON(escalator_name);
+        else
+            setOFF(escalator_name);
+
+    }
+};
+
 // Simulation Stuff
 
 var getRandomBoolean = function() {
@@ -41,5 +65,5 @@ function setRandom() {
 }
 
 window.setInterval(function(){
-  setRandom();
+  reloadData();
 }, 2000);
