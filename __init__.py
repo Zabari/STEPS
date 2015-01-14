@@ -1,7 +1,24 @@
 from flask import Flask,render_template
+from flask.ext import restful
+from utils import apiHelper
 
 app = Flask(__name__)
+api = restful.Api(app)
+  
+######## API Resources #########
 
+class HelloWorld(restful.Resource):
+    def get(self):
+        return {'hello': 'world'}
+api.add_resource(HelloWorld, '/api/test')
+
+#class (restful.Resource):
+#    def get(self, escID):
+#        return apiHelper.getStatus(EscID)
+#api.add_resource(HelloWorld, '/api/getStatus')
+
+
+######## Routes #########
 @app.route("/status")
 @app.route("/home")
 @app.route("/")
@@ -28,6 +45,8 @@ def contact():
 def base():
     return render_template("base.html");
 
+
+######## Run & Debug #########
 
 if __name__=="__main__":
     app.debug=True
