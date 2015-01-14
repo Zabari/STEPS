@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" id="index">
 
-<head>
-  <title>Status Board</title>
-
-  <meta charset="utf-8"> </object>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-  <!-- <link rel="stylesheet" href="../static/css/statusboard.css" type="text/css" media="screen"> -->
-  <script src="/static/js/script.js"></script>
-  <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="screen">
-
+  {% extends "base.html" %} {% block bodyContent %}
 
 
 </head>
@@ -107,21 +88,7 @@
     </div>
 
     <div class="col-sm-6">
-      <div class="panel panel-clear">
-        <div class="panel-body" style="text-align: center; <span class="stretch"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="panel panel-clear">
-        <div class="panel-body" style="text-align: center; c<span class="stretch"></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="panel panel-clear">
+      <div class="panel">
         <div class="panel-body" style="text-align: center;">
 	  <font size="36">About  |  API  |  Contact </font>
 	</div>
@@ -129,9 +96,4 @@
     </div>
 
   </div>
-
-</body>
-<script src="/static/js/script.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-</html>
+{%endblock%}

@@ -10,8 +10,8 @@
 }
 
 body {
-background-color: #333;
-padding-top: 85px;
+/*background-color: #333;*/
+/*padding-top: 85px;*/
 }
 
 h1 {
@@ -27,19 +27,6 @@ h1 {
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute;
 }
-
-.panel{
-	background-color: #47484B;
-	border-color: #505154;
-}
-
-.panel-clear{
-    background-color: #333;
-    border-color: #333;
-    color: white;
-    
-}
-
 
 .panel-body{
     font-family:'Roadgeek 2005 Series C',Sans-Serif;
@@ -68,3 +55,69 @@ h1 {
     /*top: 50%;*/
     /*transform: translateY(-10px);*/
 }
+
+
+
+/* Sticky footer styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+body > .container {
+    padding: 60px 15px 0;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+/* -------------------------------------------- */
+
+
+/* Sidebar Helper Fxns */
+
+.navbar-bright {
+    background-color:#111155;
+    color:#fff;
+}
+
+.affix-top,.affix{
+    position: static;
+}
+
+@media (min-width: 979px) {
+    #sidebar.affix-top {
+        position: static;
+        margin-top:30px;
+        width:228px;
+    }
+
+    #sidebar.affix {
+        position: fixed;
+        top:70px;
+        width:228px;
+    }
+}
+
+#sidebar li.active {
+    border:0 #eee solid;
+    border-right-width:5px;
+}
+
+
+/* -------------------------------------------- */
