@@ -5,19 +5,76 @@
 
 @font-face {
     font-family: 'Roadgeek 2005 Series C';
-    src: url('/static/fonts/Roadgeek 2005 Series C.eot');
-    src: local('☺'), url('/static/fonts/Roadgeek 2005 Series C.woff') format('woff'), url('/static/fonts/Roadgeek 2005 Series C.ttf') format('truetype'), url('/static/fonts/Roadgeek 2005 Series C.svg') format('svg');
+    src: url('/static/fonts/roadgeek/Roadgeek 2005 Series C.eot');
+    src: local('☺'), url('/static/fonts/roadgeek/Roadgeek 2005 Series C.woff') format('woff'), url('/static/fonts/roadgeek/roadgeek/Roadgeek 2005 Series C.ttf') format('truetype'), url('/static/fonts/roadgeek/Roadgeek 2005 Series C.svg') format('svg');
 }
 
+/* Regular */
+@font-face {
+    font-family: 'Open Sans';
+
+    src: url('/static/fonts/opensans/OpenSans-Regular-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+/* Italic */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans/OpenSans-Italic-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+/* Light */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans/OpenSans-Light-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,300,400);
+
 body {
+    font-family: 'Open Sans';
+    font-style: normal;
+    color: #C0C0C0;
 /*background-color: #333;*/
 /*padding-top: 85px;*/
+}
+
+p {
+    font-family: 'Open Sans';
+    font-style: normal;
+
 }
 
 h1 {
 	font-size: 100px;
 	color: white;
     transform: translateY(25%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Roadgeek 2005 Series C',Sans-Serif;
 }
 
 #justified {
