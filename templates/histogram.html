@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <!--style>
+      .chart div {
+      font: 10px sans-serif;
+      background-color: green;
+      text-align: right;
+      padding: 1%;
+      margin: 1%;
+      color: white;
+      }
+    </style-->
+  </head>
+  
+  <body>
+    <!--div class="chart"></div-->
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" ></script>
+    <script>
+	var True = 1
+	var False = 0
+	var hist = {{ history }}
+	var act = {{ active }}
+	var tNow = {{ tCurrent }}
+	var tFirst = {{ tFirst }}
+	var trackers = {{ trackers }}
+    </script>
+    <script src="../static/js/histogram.js"></script>
+  </body>
+</html>
+
