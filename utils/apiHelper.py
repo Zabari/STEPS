@@ -9,7 +9,7 @@ def getStatus(esc):
 
 
 #get status of all escilators
-def getStatus():
+def getAll():
     return "{'204': No Content}"
 
 

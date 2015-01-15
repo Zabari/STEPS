@@ -1,21 +1,31 @@
 from flask import Flask,render_template
-from flask.ext import restful
+from flask.ext import restful, reqparse, abort, Api, Resource
 from utils import apiHelper
 
+#See here: https://flask-restful.readthedocs.org/en/0.3.1/quickstart.html
+
 app = Flask(__name__)
-api = restful.Api(app)
+api = Api(app)
   
 ######## API Resources #########
 
-class HelloWorld(restful.Resource):
-    def get(self):
-        return {'hello': 'world'}
-api.add_resource(HelloWorld, '/api/test')
+def fourohfour(){
+    abort(404, message="Something went wrong.")
+        }
 
-#class (restful.Resource):
-#    def get(self, escID):
-#        return apiHelper.getStatus(EscID)
-#api.add_resource(HelloWorld, '/api/getStatus')
+class API(restful.Resource):
+    def get(self):
+        return {'hello': 'world'};
+
+
+class getStatus(restful.Resource):
+    def get(self):
+        return apiHelper.getAll()
+
+api.add_resource(API,
+                 '/data/test',
+                 '/data/getAll')
+
 
 
 ######## Routes #########
