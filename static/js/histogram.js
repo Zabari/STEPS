@@ -3,6 +3,13 @@ var time = tNow
 var activeTracker = act.slice()
 var graphs = []
 var names = ["2-3","2-4","3-5","4-6","5-7","6-8","7-9"]
+var pad = 5
+var rectHeight = Math.max((window.innerHeight-65)*.06,window.innerHeight*.045)
+var fontSize = Math.min(rectHeight*5/3,window.innerWidth/15)
+var buff = Math.min(5,rectHeight/3)
+var dateSize = Math.min(window.innerWidth*.04,window.innerHeight*.075,15)
+
+
 for (var n = 0; n < hist.length; n++) {
     graphs[graphs.length] = [0]
 }
@@ -18,26 +25,40 @@ while (time >= tFirst) {
 	time -= inc;
 }
 var svgContainer = d3.select("body").append("svg")
-    .attr("width", window.innerWidth-10)
-    .attr("height", Math.abs(window.innerHeight-10));
+    .attr("width", window.innerWidth-pad)
+    .attr("height", Math.abs(window.innerHeight-pad));
+
+var date0 = svgContainer.append("text")
+    .text(new Date(tFirst*1000).toDateString())
+    .attr("x",pad + fontSize*1.5)
+    .attr("y",pad + dateSize*1.15)
+    .style("font-size",dateSize+"px")
+    .style("text-anchor","start");
+var date1 = svgContainer.append("text")
+    .text(new Date(tNow*1000).toDateString())
+    .attr("x",pad + fontSize*1.5 + window.innerWidth*.8)
+    .attr("y",pad + dateSize*1.15)
+    .style("font-size",dateSize+"px")
+    .style("text-anchor","end");
 
 for (var n = 0; n < graphs.length; n++) {
     var l = graphs[n].length
     var positioner = 0
     var arrow = svgContainer.append("text")
-	.attr("x",(window.innerHeight-65)*.18 + 10 + window.innerWidth*.8)
-	.attr("y",5*(n+1)+10+(window.innerHeight-65)*.06*(n+1))
-	.attr("dy","0em")
-	.style("font-size",(window.innerHeight-65)*.1+"px")
+	.attr("x",fontSize*1.5 + pad + window.innerWidth*.8)
+	.attr("y",dateSize*1.2 + buff*n + pad + rectHeight*(n+.5))
+	.attr("dx",".35em")
+	.attr("dy",".35em")
+	.style("font-size",fontSize+"px")
 	.style("font-weight", "bold")
-	.style("text-anchor","start");
+	.style("text-anchor","middle");
     if (n%2 == 0) {
 	arrow.text("↗");
 	var text = svgContainer.append("text")
-	    .attr("x",10)
-	    .attr("y",5*(n+1)+10+(window.innerHeight-65)*.06*(n+1))
+	    .attr("x",pad)
+	    .attr("y",dateSize*1.2 + buff*(n+1) + pad +rectHeight*(n+1))
 	    .attr("dy",".35em")
-	    .style("font-size",(window.innerHeight-65)*.1+"px")
+	    .style("font-size",fontSize+"px")
 	    .style("text-anchor","start")
 	    .text(names[n/2]);
     }
@@ -53,10 +74,10 @@ for (var n = 0; n < graphs.length; n++) {
 	    
     for (var g = l-1; g >= 0; g--) {
 	var rect = svgContainer.append("rect")
-	    .attr("x",(window.innerHeight-65)*.18 + 10 + positioner)
-	    .attr("y",5*n+10+(window.innerHeight-65)*.06*n)
+	    .attr("x",fontSize*1.5 + pad + positioner)
+	    .attr("y",dateSize*1.2 + buff*n + pad + rectHeight*n)
 	    .attr("width", graphs[n][g])
-	    .attr("height", (window.innerHeight-65)*.06);
+	    .attr("height", rectHeight);
 	if (activeTracker[n] == l%2)
 	    rect.attr("fill", "green")
 	else
