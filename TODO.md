@@ -22,7 +22,7 @@ TODO
     - [x] Visual output to show when stuff works/doesnt (SVG?)
     - [x] Make responsive for different screen sizes?? `FRONTEND`
     - [x] Make pretty :grin:
-    - [ ] Build Database `BACKEND`
+    - [x] Build Database `BACKEND``Branch: Server`
  - [x] Research RPi Connectivity `HARDWARE`
  - [x] Get tracker
 
@@ -32,8 +32,8 @@ TODO
  - [x] Get arduino communicating with RPi `HARDWARE`
  - [x] Get RPi communicating with website `HARDWARE`
  - [ ] Make website respond to RPi post requests `BACKEND`
- - [ ] Make graphics show changes in state `FRONTEND`
- - [ ] Uptime page?? Checkout
+ - [x] Make graphics show changes in state `FRONTEND`
+ - [x] Uptime page?? `Branch: UI`
 
 
  ####Before Due
