@@ -1,5 +1,3 @@
-console.log('fuck yall');
-
 var inc = (tNow-tFirst)/(window.innerWidth*.8)
 var time = tNow
 var activeTracker = act.slice()
