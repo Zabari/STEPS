@@ -38,12 +38,25 @@ def fetchTime(esci):
     ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
     for i in range(len(ret)):
         ret[i]=ret[i][0]
-    return ret
     conn.close()
+    return ret
 def fetchAllTime():
     ret=[]
     for i in range(len(L)):
         ret.append(fetchTime(i))
+    return ret
+def fetchStatus(esci):
+    ret=[]
+    conn = sqlite3.connect('esc.db')
+    c=conn.cursor()
+    maxi=c.execute('SELECT max(time) FROM esc where name=?',(L[esci],)).fetchall()[0][0]
+    ret=c.execute('SELECT status FROM esc WHERE name=? AND time=?',(L[esci],maxi,)).fetchall()[0][0]==1
+    conn.close()
+    return ret
+def fetchStatusAll():
+    ret=[]
+    for i in range(len(L)):
+        ret.append(fetchStatus(i))
     return ret
 #updateDatabase(d) #for testing
 #conn = sqlite3.connect('esc.db')
@@ -52,3 +65,4 @@ def fetchAllTime():
 #conn.close()
 #print fetchAll() #for testing
 #print fetchAllTime()
+#print fetchStatusAll()
