@@ -44,6 +44,38 @@ var date1 = svgContainer.append("text")
 for (var n = 0; n < graphs.length; n++) {
     var l = graphs[n].length
     var positioner = 0
+   
+    var upTime = 0
+    var downTime = 0
+    for (var g = l-1; g >= 0; g--) {
+	var rect = svgContainer.append("rect")
+	    .attr("x",fontSize*1.5 + pad + positioner)
+	    .attr("y",dateSize*1.2 + buff*n + pad + rectHeight*n)
+	    .attr("width", graphs[n][g])
+	    .attr("height", rectHeight);
+	if (activeTracker[n] == l%2) {
+	    rect.attr("fill", "green")
+	    upTime += graphs[n][g]
+	}
+	else {
+	    rect.attr("fill", "red")
+	    downTime += graphs[n][g]
+	}
+	activeTracker[n] = !activeTracker[n]
+	positioner += graphs[n][g]
+    }
+    var pctUp = Math.round(upTime*100/(upTime + downTime))+'%'
+
+    var upTime = svgContainer.append("text")
+	.text(pctUp)
+	.attr("x",fontSize*1.5 + pad)
+	.attr("y",dateSize*1.2 + buff*n + pad + rectHeight*(n+.5))
+	.attr("dx",".35em")
+	.attr("dy",".35em")
+	.style("font-size",rectHeight+"px")
+	.style("text-anchor","start")
+	.style("fill","white");
+    
     var arrow = svgContainer.append("text")
 	.attr("x",fontSize*1.5 + pad + window.innerWidth*.8)
 	.attr("y",dateSize*1.2 + buff*n + pad + rectHeight*(n+.5))
@@ -71,20 +103,7 @@ for (var n = 0; n < graphs.length; n++) {
     else {
 	arrow.style("fill","red")
     }
-	    
-    for (var g = l-1; g >= 0; g--) {
-	var rect = svgContainer.append("rect")
-	    .attr("x",fontSize*1.5 + pad + positioner)
-	    .attr("y",dateSize*1.2 + buff*n + pad + rectHeight*n)
-	    .attr("width", graphs[n][g])
-	    .attr("height", rectHeight);
-	if (activeTracker[n] == l%2)
-	    rect.attr("fill", "green")
-	else
-	    rect.attr("fill", "red")
-	activeTracker[n] = !activeTracker[n]
-	positioner += graphs[n][g]
-    }
+    
 }
 
 window.onresize = function(){ location.reload(); }
