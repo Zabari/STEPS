@@ -7,24 +7,25 @@ from utils import apiHelper
 app = Flask(__name__)
 api = restful.Api(app)
   
-######## API Resources #########
 
-#def fourohfour(){
-#    abort(404, message="Something went wrong.")
-#        }
+######## API Resources ######### 
+def fourohfour():
+    abort(404, message="Something went wrong.")
+
 
 #class API(restful.Resource):
 #    def get(self):
 #        return {'hello': 'world'};
 
 
-#class getStatus(restful.Resource):
-#    def get(self):
-#        return apiHelper.getAll()
+
+# class getStatus(restful.Resource):
+#     def get(self):
+#         return apiHelper.getAll()
 
 #api.add_resource(API,
-#                 '/data/test',
-#                 '/data/getAll')
+#                 '/api/test',
+#                 '/api/getAll')
 
 
 
