@@ -5,7 +5,7 @@ false=False
 d={'data':[[6, false, 6421203495.845522],[6, true, 5421203495.845522],[13, true, 4421203495.845522],[12, false, 3421203495.845522],[10, false, 2421203495.845522],[3, true, 1421203495.845522],[8, true, 1421203492.84195],[5, false, 1421203498.848851],[0, true, 1421203500.851109],[2, true, 1421203489.83835], [9, true, 1421203489.838356],\
 [4,true ,40432523.4324], [1, true, 1421203490.83955],[7, true, 1421203490.839556], [11, true, 1421203490.839558]]} #for testing
 def updateDatabase(data):
-    conn = sqlite3.connect('esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     try:
         c.execute('CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)')
@@ -20,7 +20,7 @@ def updateDatabase(data):
 
 def fetchAll():
     d={}
-    conn = sqlite3.connect('esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     for x in L:
         d[x]={}
@@ -33,7 +33,7 @@ def fetchAll():
     return d
 def fetchTime(esci):
     ret=[]
-    conn = sqlite3.connect('esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
     for i in range(len(ret)):
@@ -47,7 +47,7 @@ def fetchAllTime():
     return ret
 def fetchStatus(esci):
     ret=[]
-    conn = sqlite3.connect('esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     maxi=c.execute('SELECT max(time) FROM esc where name=?',(L[esci],)).fetchall()[0][0]
     ret=c.execute('SELECT status FROM esc WHERE name=? AND time=?',(L[esci],maxi,)).fetchall()[0][0]==1

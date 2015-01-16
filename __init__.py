@@ -1,5 +1,5 @@
 from flask import Flask,render_template
-import json, server
+import json, server, time
 
 '''
 Add import statement for Zabari's server code
@@ -39,7 +39,7 @@ def getData():
 
 @app.route("/histogram")
 def histogram():
-    active = [False, False, False, False, True, False, True, False, False, False, True, True, False, False]
+    active = server.fetchStatusAll()
     history = server.fetchAllTime()
     
     tCurrent = time.time()
