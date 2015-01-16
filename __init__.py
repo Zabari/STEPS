@@ -37,6 +37,21 @@ def getData():
     data = server.fetchAll()
     return json.dumps(data)
 
+@app.route("/histogram")
+def histogram():
+    active = [False, False, False, False, True, False, True, False, False, False, True, True, False, False]
+    history = server.fetchAllTime()
+    
+    tCurrent = time.time()
+    tFirst = tCurrent
+    trackers = []
+
+    for esc in history:
+        trackers.append(len(esc)-1)
+        if len(esc) > 0 and esc[0] < tFirst:
+            tFirst = esc[0]
+    return render_template("histogram.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
+
 if __name__=="__main__":
     app.debug=True
     app.run() 
