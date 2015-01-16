@@ -35,14 +35,20 @@ def fetchTime(esci):
     ret=[]
     conn = sqlite3.connect('esc.db')
     c=conn.cursor()
-    ret=c.execute('SELECT * FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchAll()
+    ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
+    for i in range(len(ret)):
+        ret[i]=ret[i][0]
     return ret
     conn.close()
-#def fetchAllTime():
-updateDatabase(d) #for testing
+def fetchAllTime():
+    ret=[]
+    for i in range(len(L)):
+        ret.append(fetchTime(i))
+    return ret
+#updateDatabase(d) #for testing
 #conn = sqlite3.connect('esc.db')
 #c=conn.cursor()
 #print c.execute('SELECT * FROM esc WHERE name=?',("up46",)).fetchall()
 #conn.close()
-print fetchAll() #for testing
-print fetchTime(0)
+#print fetchAll() #for testing
+#print fetchAllTime()
