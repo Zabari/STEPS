@@ -1,37 +1,23 @@
-<<<<<<< HEAD
 {% extends "base.html" %}
-
 {% block headerContent %}
-<script src="../static/js/d3.v3.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 {% endblock headerContent %}
+
+{% block title %} Statistics {% endblock %}
+
 
 {% block bodyContent %}
 
-<h2> Statistics </h2>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js" charset="utf-8"></script>
 <script>
-var True = 1
-var False = 0
-var hist = {{ history }}
-var act = {{ active }}
-var tNow = {{ tCurrent }}
-var tFirst = {{ tFirst }}
-var trackers = {{ trackers }}
+    var True     = 1
+    var False    = 0
+    var hist     = {{history}}
+    var act      = {{active}}
+    var tNow     = {{tCurrent}}
+    var tFirst   = {{tFirst}}
+    var trackers = {{trackers}}
 </script>
-
-<script src="../static/js/histogram.js"></script>
-
-{% endblock bodyContent %}
-=======
-{% extends "base.html" %} {% block bodyContent %}
-
-<h2> Statistics </h2>
+<script src="/static/js/histogram.js"></script>
 
 {% endblock bodyContent %}
-
-
-{% block filesBottom %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
-{% endblock filesBottom %}
->>>>>>> 57177ec35df5540f4e4da7068a68a615268c32be

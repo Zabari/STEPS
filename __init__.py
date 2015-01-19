@@ -71,7 +71,23 @@ def histogram():
         trackers.append(len(esc)-1)
         if len(esc) > 0 and esc[0] < tFirst:
             tFirst = esc[0]
-    return render_template("histogram.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
+    return render_template("stats.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers, title="STEPS")
+
+
+# @app.route("/histogram")
+# def histogram():
+#     active = server.fetchStatusAll()
+#     history = server.fetchAllTime()
+#
+#     tCurrent = time.time()
+#     tFirst = tCurrent
+#     trackers = []
+#
+#     for esc in history:
+#         trackers.append(len(esc)-1)
+#         if len(esc) > 0 and esc[0] < tFirst:
+#             tFirst = esc[0]
+#     return render_template("histogram.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
 
 
 
