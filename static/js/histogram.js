@@ -33,14 +33,14 @@ var date0 = svgContainer.append("text")
     .attr("x",pad + fontSize*1.5)
     .attr("y",pad + dateSize*1.15)
     .style("font-size",dateSize+"px")
-	.style("fill","white")
+    .style("fill","white")
     .style("text-anchor","start");
 var date1 = svgContainer.append("text")
     .text(new Date(tNow*1000).toDateString())
     .attr("x",pad + fontSize*1.5 + window.innerWidth*.8)
     .attr("y",pad + dateSize*1.15)
     .style("font-size",dateSize+"px")
-	.style("fill","white")
+    .style("fill","white")
     .style("text-anchor","end");
 
 for (var n = 0; n < graphs.length; n++) {
@@ -94,12 +94,11 @@ for (var n = 0; n < graphs.length; n++) {
 	    .attr("dy",".35em")
 	    .style("font-size",fontSize+"px")
 	    .style("text-anchor","start")
-		.style("fill","white")
+	    .style("fill","white")
 	    .text(names[n/2]);
     }
     else
 	arrow.text("↘");
-
     if (act[n]) {
 	arrow.style("fill","green")
     }
@@ -107,6 +106,10 @@ for (var n = 0; n < graphs.length; n++) {
 	arrow.style("fill","red")
     }
 
+
 }
 
 window.onresize = function(){ location.reload(); }
+
+    
+
