@@ -7,6 +7,7 @@ from utils import apiHelper
 
 import json, server
 
+
 '''
 Add import statement for Zabari's server code
 I'll assume module is called `server` and has methods:
@@ -111,6 +112,21 @@ def histogram():
 
 
 ######## Run & Debug #########
+
+@app.route("/histogram")
+def histogram():
+    active = server.fetchStatusAll()
+    history = server.fetchAllTime()
+    
+    tCurrent = time.time()
+    tFirst = tCurrent
+    trackers = []
+
+    for esc in history:
+        trackers.append(len(esc)-1)
+        if len(esc) > 0 and esc[0] < tFirst:
+            tFirst = esc[0]
+    return render_template("histogram.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
 
 if __name__=="__main__":
     app.debug=True
