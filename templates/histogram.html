@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-  </head>
-  
-  <body>
-    <script src="../static/js/d3.v3.min.js" charset="utf-8"></script>
-    <script>
-	var True = 1
-	var False = 0
-	var hist = {{ history }}
-	var act = {{ active }}
-	var tNow = {{ tCurrent }}
-	var tFirst = {{ tFirst }}
-	var trackers = {{ trackers }}
-    </script>
-    <script src="../static/js/histogram.js"></script>
-  </body>
-</html>
+</head>
 
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js" charset="utf-8"></script>
+<script>
+var True = 1
+var False = 0
+var hist = {{ history }}
+var act = {{ active }}
+var tNow = {{ tCurrent }}
+var tFirst = {{ tFirst }}
+var trackers = {{ trackers }}
+</script>
+<script src="../static/js/histogram.js"></script>
+</body>
+</html>

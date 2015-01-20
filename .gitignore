@@ -1,3 +1,14 @@
+# Mac OS CRAP
+.DS_Store
+
+# Emacs Crap
+~*~
+\#*\#
+
+#Database Stuff
+*.db
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
