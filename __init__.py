@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 import json, server, time
 from flask.ext import restful
 from utils import apiHelper
