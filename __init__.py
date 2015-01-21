@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask, render_template, request
 import json, server, time
 from flask.ext import restful
 from utils import apiHelper
@@ -84,20 +84,17 @@ def contact():
     return render_template("contact.html", title="STEPS");
 
 @app.route("/stats")
-def histogram():
+def stats():
     active = server.fetchStatusAll()
     history = server.fetchAllTime()
-
     tCurrent = time.time()
     tFirst = tCurrent
     trackers = []
-
     for esc in history:
         trackers.append(len(esc)-1)
         if len(esc) > 0 and esc[0] < tFirst:
             tFirst = esc[0]
-    return render_template("stats.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers, title="STEPS")
-
+    return render_template("stats.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
 
 # @app.route("/histogram")
 # def histogram():
