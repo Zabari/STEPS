@@ -48,7 +48,7 @@ def fetchTimeList(esci):
 def fetchAllTimeList():
     ret=[]
     for i in range(len(L)):
-        ret.append(fetchTime(i))
+        ret.append(fetchTimeList(i))
     return ret
 
 def fetchStatusList(esci):
@@ -62,7 +62,7 @@ def fetchStatusList(esci):
 def fetchAllStatusList():
     ret=[]
     for i in range(len(L)):
-        ret.append(fetchStatus(i))
+        ret.append(fetchStatusList(i))
     return ret
 
 #updateDatabase(d) #for testing

@@ -64,7 +64,7 @@ def internal_server_error(e):
 @app.route("/home")
 @app.route("/")
 def status():
-    active = server.fetchStatusAll()
+    active = server.fetchAllStatusList()
     return render_template("status.html", active = active, title="STEPS");
 
 @app.route("/base")
@@ -86,8 +86,8 @@ def contact():
 
 @app.route("/stats")
 def stats():
-    active = server.fetchStatusAll()
-    history = server.fetchAllTime()
+    active = server.fetchAllStatusList()
+    history = server.fetchAllTimeList()
     tCurrent = time.time()
     tFirst = tCurrent
     trackers = []
