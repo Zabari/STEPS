@@ -11,6 +11,17 @@ api = restful.Api(app)
 
 ######## API Resources #########
 
+# /api/escalators/all/current
+# /api/escalators/up23/current
+
+# /api/escalators/all/history, same as /api/escalators/all/history?min=0&max=100
+# /api/escalators/up23/history
+
+# includes next and previous with different min & max values
+
+# /api/escalators/all/history?min=23&max=25
+# /api/escalators/up23/history
+
 #class API(restful.Resource):
 #    def get(self):
 #        return {'hello': 'world'};
