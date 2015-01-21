@@ -64,7 +64,8 @@ def internal_server_error(e):
 @app.route("/home")
 @app.route("/")
 def status():
-    return render_template("status.html", title="STEPS");
+    active = server.fetchStatusAll()
+    return render_template("status.html", active = active, title="STEPS");
 
 @app.route("/base")
 def base():
