@@ -1,0 +1,193 @@
+/*Colors: Electric blue: #2a9fd6, black: #fff */
+
+@font-face {
+    font-family: roadGeek;
+    src: url(sansation_light.woff);
+}
+
+@font-face {
+    font-family: 'Roadgeek 2005 Series C';
+    src: url('/static/fonts/roadgeek/Roadgeek 2005 Series C.eot');
+    src: local('☺'), url('/static/fonts/roadgeek/Roadgeek 2005 Series C.woff') format('woff'), url('/static/fonts/roadgeek/roadgeek/Roadgeek 2005 Series C.ttf') format('truetype'), url('/static/fonts/roadgeek/Roadgeek 2005 Series C.svg') format('svg');
+}
+
+/* Regular */
+@font-face {
+    font-family: 'Open Sans';
+
+    src: url('/static/fonts/opensans/OpenSans-Regular-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+/* Italic */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans/OpenSans-Italic-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Italic-webfont.svg#OpenSansItalic') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+/* Light */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/static/fonts/opensans/OpenSans-Light-webfont.eot');
+    src: url('/static/fonts/opensans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.woff') format('woff'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.ttf') format('truetype'),
+    url('/static/fonts/opensans/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+
+body {
+    font-family: 'Open Sans';
+    font-style: normal;
+    color: #C0C0C0;
+/*background-color: #333;*/
+/*padding-top: 85px;*/
+}
+
+p {
+    font-family: 'Open Sans';
+    font-style: normal;
+}
+
+h1 {
+	font-size: 100px;
+	color: white;
+    transform: translateY(25%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Roadgeek 2005 Series C',Sans-Serif;
+}
+
+#justified {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute;
+}
+
+.panel-body{
+    font-family:'Roadgeek 2005 Series C',Sans-Serif;
+}
+
+.statusimg {
+    width: 30%;
+    height: auto;
+    vertical-align: middle;
+    max-width: 185px;
+    /*transform: translateY(-15%);*/
+    }
+
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+
+}
+
+
+.vcenter {
+    position: relative;
+    /*top: 50%;*/
+    /*transform: translateY(-10px);*/
+}
+
+
+a:hover, a:active {
+    color: #2a9fd6;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:active{
+    color: #2a9fd6;
+}
+
+/* Sticky footer styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+body > .container {
+    padding: 60px 15px 0;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #060606;
+		//border-style: solid;
+		//border-width: .5px;
+		//border-color: white;
+}
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+
+
+/* -------------------------------------------- */
+
+
+/* Sidebar Helper Fxns */
+
+.navbar-bright {
+    background-color:#111155;
+    color:#fff;
+}
+
+.affix-top,.affix{
+    position: static;
+}
+
+@media (min-width: 979px) {
+    #sidebar.affix-top {
+        position: static;
+        margin-top:30px;
+        width:228px;
+    }
+
+    #sidebar.affix {
+        position: fixed;
+        top:70px;
+        width:228px;
+    }
+}
+
+#sidebar li.active {
+    border:0 #eee solid;
+    border-right-width:5px;
+}
+
+
+/* -------------------------------------------- */

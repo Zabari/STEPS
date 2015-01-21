@@ -1,4 +1,5 @@
-EscalatorHaus
+
+STEPS
 -------------
 -------------
 
@@ -29,3 +30,4 @@ We're starting with just one escalator, but if we're successful, we can implemen
 
 ##Timeline
 *See [TODO.md](https://github.com/Zabari/EscalatorHaus/blob/master/TODO.md).*
+
