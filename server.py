@@ -6,13 +6,13 @@ false=False
 #[4,true ,1421203492.84195], [1, true, 1421203490.83955],[7, true, 1421203490.839556], [11, true, 1421203490.839558]]} #for testing
 lol=time.time()
 d={'data':[[0, false, lol],[1, false, lol],[2, false, lol],[3, false, lol],[4, false, lol],[5, false, lol],[6, false, lol],[7, false, lol],[8, false, lol],[9, false, lol],[10, false, lol],[11, false, lol],[12, false, lol],[13, false, lol]]}
-def updateDatabase(data):
+def updateDatabase(data): #Updates database with data
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     try:
         c.execute('CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)')
 	os.system('chown -R www-data:www-data /var/www')
-	#os.system('reload_server')
+	os.system('/etc/init.d/apache2 reload')
     except:
         print
     for x in data["data"]:
