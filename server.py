@@ -22,7 +22,7 @@ def updateDatabase(data): #Updates database with data
         conn.commit()
     conn.close()
 
-def fetchAll():
+def fetchStatusAllDic():
     d={}
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
@@ -35,7 +35,7 @@ def fetchAll():
         #print d[x]['status']
     conn.close()
     return d
-def fetchTime(esci):
+def fetchTimeList(esci):
     ret=[]
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
@@ -45,22 +45,13 @@ def fetchTime(esci):
     conn.close()
     return ret
 
-def fetchStatus(esci):
-    ret=[]
-    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
-    c=conn.cursor()
-    maxi=c.execute('SELECT max(time) FROM esc where name=?',(L[esci],)).fetchall()[0][0]
-    ret=c.execute('SELECT status FROM esc WHERE name=? AND time=?',(L[esci],maxi,)).fetchall()[0][0]==1
-    conn.close()
-    return ret
-
-def fetchAllTime():
+def fetchAllTimeList():
     ret=[]
     for i in range(len(L)):
         ret.append(fetchTime(i))
     return ret
 
-def fetchStatus(esci):
+def fetchStatusList(esci):
     ret=[]
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
@@ -68,7 +59,7 @@ def fetchStatus(esci):
     ret=c.execute('SELECT status FROM esc WHERE name=? AND time=?',(L[esci],maxi,)).fetchall()[0][0]==1
     conn.close()
     return ret
-def fetchStatusAll():
+def fetchAllStatusList():
     ret=[]
     for i in range(len(L)):
         ret.append(fetchStatus(i))
