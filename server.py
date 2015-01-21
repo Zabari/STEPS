@@ -85,4 +85,3 @@ def fetchStatusAll():
 #print fetchAll() #for testing
 #print fetchAllTime()
 #print fetchStatusAll()
-
