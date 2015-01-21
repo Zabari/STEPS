@@ -53,9 +53,6 @@ def fetchStatus(esci):
     ret=c.execute('SELECT status FROM esc WHERE name=? AND time=?',(L[esci],maxi,)).fetchall()[0][0]==1
     conn.close()
     return ret
-def fetchStatusAll():
-    conn.close()
-    return ret
 
 def fetchAllTime():
     ret=[]
