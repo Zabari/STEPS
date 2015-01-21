@@ -41,8 +41,8 @@ def getData(s):# format of s: {4:1, 5:0}
   #  e2 = data.keys()[0]
    # v1 = data[e1]
     #v2 = data[e2]
-    e1,e2,v1,v2 = int(s[1]), int(s[7]), int(s[4]), int(s[10])
-#    #e1,e2,v1,v2 = int(s[1:s.find(':')]),int(s[s.find(' '):s.rfind(':')]),int(s[s.find(':')+1:s.find(',')]),int(s[s.rfind(':')+1:s.rfind('}')])
+    #e1,e2,v1,v2 = int(s[1]), int(s[7]), int(s[4]), int(s[10])
+    e1,e2,v1,v2 = int(s[1:s.find(':')]),int(s[s.find(' '):s.rfind(':')]),int(s[s.find(':')+1:s.find(',')]),int(s[s.rfind(':')+1:s.rfind('}')])
 
     oldStates[e1],oldStates[e2] = newStates[e1],newStates[e2]
     newStates[e1],newStates[e2] = bool(v1),bool(v2)

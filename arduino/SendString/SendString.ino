@@ -98,7 +98,7 @@ void loop()
   if (millis()%10000 == 0){
     // Escilator is 4 for up and 5 down for 5, send 
     Serial.println("Sending data...");
-    String data = "{4: " + String(on1) + ", 5: " + String(on2) + "}";
+    String data = "{4:" + String(on1) + ", 5:" + String(on2) + "}";
     data.toCharArray(SendPayload, data.length()+1);
 
    // Serial.print("SendPayload[1] = ");
