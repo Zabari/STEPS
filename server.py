@@ -1,14 +1,18 @@
-import sqlite3
+import sqlite3, os, time
 L = ["up23", "down23","up24", "down24","up35", "down35","up46", "down46","up57", "down57","up68", "down68","up79", "down79"]
 true=True
 false=False
-d={'data':[[6, false, 6421203495.845522],[6, true, 5421203495.845522],[13, true, 4421203495.845522],[12, false, 3421203495.845522],[10, false, 2421203495.845522],[3, true, 1421203495.845522],[8, true, 1421203492.84195],[5, false, 1421203498.848851],[0, true, 1421203500.851109],[2, true, 1421203489.83835], [9, true, 1421203489.838356],\
-[4,true ,40432523.4324], [1, true, 1421203490.83955],[7, true, 1421203490.839556], [11, true, 1421203490.839558]]} #for testing
+#d={'data':[[6, false, 1421203495.845522],[6, true, 1421203495.845522],[13, true, 1421203495.845522],[12, false, 1421203495.845522],[10, false, 1421203495.845522],[3, true, 1421203495.845522],[8, true, 1421203492.84195],[5, false, 1421203498.848851],[0, true, 1421203500.851109],[2, true, 1421203489.83835], [9, true, 1421203489.838356],\
+#[4,true ,1421203492.84195], [1, true, 1421203490.83955],[7, true, 1421203490.839556], [11, true, 1421203490.839558]]} #for testing
+lol=time.time()
+d={'data':[[0, false, lol],[1, false, lol],[2, false, lol],[3, false, lol],[4, false, lol],[5, false, lol],[6, false, lol],[7, false, lol],[8, false, lol],[9, false, lol],[10, false, lol],[11, false, lol],[12, false, lol],[13, false, lol]]}
 def updateDatabase(data):
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     try:
         c.execute('CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)')
+	os.system('chown -R www-data:www-data /var/www')
+	#os.system('reload_server')
     except:
         print
     for x in data["data"]:
