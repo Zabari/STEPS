@@ -60,7 +60,7 @@ def fetchStatusAll():
 def fetchAllTime():
     ret=[]
     for i in range(len(L)):
-        ret.append(fetchStatus(i))
+        ret.append(fetchTime(i))
     return ret
 
 def fetchStatus(esci):
