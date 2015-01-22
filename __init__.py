@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 import json, server, time
 from flask.ext import restful
 from utils import apiHelper
@@ -22,18 +22,14 @@ api = restful.Api(app)
 # /api/escalators/all/history?min=23&max=25
 # /api/escalators/up23/history
 
-#class API(restful.Resource):
-#    def get(self):
-#        return {'hello': 'world'};
+class API(restful.Resource):
+    def get(self, escalator, type):
+        return {'hello': 'world'};
 
 
-# class getStatus(restful.Resource):
-#     def get(self):
-#         return apiHelper.getAll()
-
-#api.add_resource(API,
-#                 '/api/test',
-#                 '/api/getAll')
+api.add_resource(API,
+                 '/api/test',
+                 '/api/escalators/<string:escalator>/<string:type>')
 
 
 ###### Error Handlers ######
@@ -60,10 +56,6 @@ def base():
 @app.route("/about")
 def about():
     return render_template("about.html", title="STEPS");
-
-@app.route("/api")
-def api():
-    return render_template("api.html", title="STEPS");
 
 @app.route("/contact")
 def contact():
