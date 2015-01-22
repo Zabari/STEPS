@@ -39,9 +39,9 @@ var updatePage = function(escalator_status) {
         data = escalator_status[escalator_name];
         _status = data.status;
         if (_status)
-            setON(escalator_name);
+            setON(escalators[escalator_name]);
         else
-            setOFF(escalator_name);
+            setOFF(escalators[escalator_name]);
 
     }
 };

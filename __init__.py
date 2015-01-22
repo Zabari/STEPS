@@ -65,7 +65,7 @@ def internal_server_error(e):
 @app.route("/")
 def status():
     active = server.fetchAllStatusList()
-    return render_template("status.html", active = active, title="STEPS");
+    return render_template("status.html", title="STEPS");
 
 @app.route("/base")
 def base():
@@ -101,13 +101,13 @@ def stats():
 def newData():	
     if request.method == "POST": # and request.secret == "uniqueSecret123456"		
         data = json.loads(request.data)	
-        server.updateDatabase(data)		
+    server.updateDatabase(data)		
 		
 # JS gets updates from getData	
 @app.route("/getData")	
 def getData():		
-    data = server.fetchAllList()		
-   return json.dumps(data)
+    data = server.fetchAllStatusList()		
+    return json.dumps(data)
 
 # @app.route("/histogram")
 # def histogram():
