@@ -97,6 +97,18 @@ def stats():
             tFirst = esc[0]
     return render_template("stats.html", history = history, active = active, tCurrent = tCurrent, tFirst = tFirst, trackers = trackers)
 
+@app.route("/newData", methods = ["POST"])
+def newData():	
+    if request.method == "POST": # and request.secret == "uniqueSecret123456"		
+        data = json.loads(request.data)	
+        server.updateDatabase(data)		
+		
+# JS gets updates from getData	
+@app.route("/getData")	
+def getData():		
+    data = server.fetchAllList()		
+   return json.dumps(data)
+
 # @app.route("/histogram")
 # def histogram():
 #     active = server.fetchStatusAll()
