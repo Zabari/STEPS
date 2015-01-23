@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request, jsonify
 import json, server, time
 from flask.ext import restful
 from utils import apiHelper
@@ -11,8 +11,8 @@ api = restful.Api(app)
 
 ######## API Resources #########
 
-# /api/escalators/all/current
-# /api/escalators/up23/current
+# /api/escalators/all/status
+# /api/escalators/up23/status
 
 # /api/escalators/all/history, same as /api/escalators/all/history?min=0&max=100
 # /api/escalators/up23/history
@@ -24,7 +24,18 @@ api = restful.Api(app)
 
 class API(restful.Resource):
     def get(self, escalator, type):
-        return {'hello': 'world'};
+        if type == None:
+            type = "status"
+
+        if type not in ["history", "status"]:
+            return api_error_message("Invalid type: Must be empty or 'status' or 'history'")
+
+        if escalator not in ["up23", "down23","up24", "down24","up35", "down35","up46", "down46","up57", "down57","up68", "down68","up79", "down79"]:
+            return api_error_message("Invalid escalator name. Must be direction followed by floors, ex. 'up57'")
+
+
+def api_error_message(message):
+    return jsonify(error=message)
 
 
 api.add_resource(API,
@@ -32,12 +43,11 @@ api.add_resource(API,
                  '/api/escalators/<string:escalator>/<string:type>')
 
 
-###### Error Handlers ######
+#Type must be either 'status' or 'history'##### Error Handlers ######
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
 
 
 
