@@ -32,22 +32,21 @@ var reloadData = function() {
 // Given data, update page
 var updatePage = function(escalator_status) {
     // Get the escalator names delivered in the data
-    var escalator_names = Object.keys(escalator_status);
-    var data, _status;
+    var _status;
     // For every escalator, run either `setON` or `setOFF`
-    for (var escalator_name in escalator_names) {
-        data = escalator_status[escalator_name];
-        _status = data.status;
+    for (var i = 0; i < escalator_status.length; i++) {
+        _status = escalator_status[i];
         if (_status)
-            setON(escalators[escalator_name]);
+            setON(escalators[i]);
         else
-            setOFF(escalators[escalator_name]);
+            setOFF(escalators[i]);
 
     }
 };
 
 // Simulation Stuff
 
+/**********************************************
 var getRandomBoolean = function() {
   var randomNumber = Math.random() >= 0.5;
   return randomNumber;
@@ -63,6 +62,7 @@ function setRandom() {
     };
   };
 }
+********************************************/
 
 window.setInterval(function(){
   reloadData();
