@@ -29,15 +29,12 @@ def fetchStatusAllDic():
     for x in L:
         d[x]={}
         maxi=c.execute('SELECT max(time) FROM esc where name=?',(x,)).fetchall()[0][0]
-        #print maxi
         d[x]['status']=(c.execute('SELECT status FROM esc WHERE name=? AND time=?',(x,maxi,)).fetchall()[-1][-1]==1)
-        #d[x]['status']=(c.execute('SELECT * FROM esc WHERE name=? ORDER BY time',(x,)).fetchall()[-1][-1]==1)
-        #print d[x]['status']
     conn.close()
     return d
 def fetchTimeList(esci):
     ret=[]
-    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
+    #conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
     for i in range(len(ret)):
@@ -64,6 +61,39 @@ def fetchAllStatusList():
     for i in range(len(L)):
         ret.append(fetchStatusList(i))
     return ret
+
+
+def fetchHistoryInterval(escalator,mini, maxi):
+    d={}
+    d[escalator]={}
+    d[escalator]["statuses"]=[]
+    d[escalator]["times"]=[]
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
+    c=conn.cursor()
+    if mini!=0:
+        L=c.execute('SELECT status,time FROM esc WHERE name=? ORDER BY time LIMIT ?,?',(escalator,mini-1,maxi-mini+1,)).fetchAll()
+        for x in L:
+            d[escalator]["statuses"].append(x[0])
+            d[escalator]["times"].append(x[1])
+        else:
+            L=c.execute('SELECT status,time FROM esc WHERE name=? ORDER BY time LIMIT ?',(escalator,maxi-mini,)).fetchAll()
+            for x in L:
+                d[escalator]["statuses"].append(x[0])
+                d[escalator]["times"].append(x[1])
+            
+           
+    conn.close()
+    return d
+def fetchTimeList(esci):
+    ret=[]
+    #conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
+    c=conn.cursor()
+    ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
+    for i in range(len(ret)):
+        ret[i]=ret[i][0]
+    conn.close()
+    return ret
+
 
 #updateDatabase(d) #for testing
 #conn = sqlite3.connect('esc.db')
