@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
-import json, server, time
+from flask import Flask,render_template, request
+import json, server, time, app_api
 from flask.ext import restful
 from utils import apiHelper
 
-#See here: https://flask-restful.readthedocs.org/en/0.3.1/quickstart.html
 
 import json, server
 
@@ -28,24 +27,11 @@ I'll assume module is called `server` and has methods:
 app = Flask(__name__)
 api = restful.Api(app)
 
-
-######## API Resources #########
-
-#class API(restful.Resource):
-#    def get(self):
-#        return {'hello': 'world'};
+api.add_resource(app_api.API,
+                 '/api/escalators/<string:escalator>/<string:data_type>')
 
 
-# class getStatus(restful.Resource):
-#     def get(self):
-#         return apiHelper.getAll()
-
-#api.add_resource(API,
-#                 '/api/test',
-#                 '/api/getAll')
-
-
-###### Error Handlers ######
+#Type must be either 'status' or 'history'##### Error Handlers ######
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -71,14 +57,14 @@ def status():
 def base():
     return render_template("base.html", title="STEPS");
 
+@app.route("/api")
+def api_doc():
+    return render_template("api.html", title="STEPS API");
+
 
 @app.route("/about")
 def about():
     return render_template("about.html", title="STEPS");
-
-@app.route("/api")
-def api():
-    return render_template("api.html", title="STEPS");
 
 @app.route("/contact")
 def contact():
