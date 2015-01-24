@@ -13,19 +13,16 @@
         <!--left-->
         <div class="col-md-3" id="leftCol">
             <ul class="nav nav-stacked" id="sidebar">
-                <li><a href="#sec0"> Introduction         </a>
+                <li><a href="#sec0"> About the API</a>
                 </li>
 
-		<li><a href="#sec00"> Quickstatrt        </a>
+		<li><a href="#sec00"> Escalator Names</a>
         </li>
-                <li><a href="#sec1"> Authentication       </a>
+                <li><a href="#sec1">Getting the Current Status</a>
                 </li>
-                <li><a href="#sec2"> Calls                </a>
+                <li><a href="#sec2">Getting Past Statuses</a>
                 </li>
-                <li><a href="#sec3"> Errors               </a>
-                </li>
-                <li><a href="#sec4"> Data Output          </a>
-                </li>
+                <li><a href="#sec3">Errors</a>
             </ul>
         </div>
         <!--/left-->
@@ -35,69 +32,92 @@
             <h2 id="sec0">About the API</h2>
 	    <div class="col-sm-7">
             <p>
-	      The STEPS API is an awesome RESTful API for tracking the escalators in Stuyvesant High School. You get all the data that our server has access to, including the history of statuses going back to the very first measurement.
+            The STEPS API is an awesome RESTful API for tracking the escalators in Stuyvesant High School. You get all the data that our server has access to, including the history of statuses going back to the very first measurement.
+            <br>
+            All data is returned in JSON.
+            <br>
+            No authentication is needed.
 	    </p>
 	    </div>
 	    <div class="col-sm-5">
-	      <p>
 		<samp>
 
 		  <b>API Endpoint</b> <br \>
 
-		  http://stuysteps.nyc/
+		  http://stuysteps.nyc/api/escalators
 		  <br \><br \><br \><br \><br \>
+              <br \><br \>
 		</samp>
 	    </div>
 
+            <h2 id="sec00">Escalator Names</h2>
+            <div class="col-sm-7">
+                <p>
+                Whenever an escalator name is needed, you can either say "all" or specify an escalator. The format is the direction of the escalator ("up" or "down") followed by the bottom floor followed by the top floor. For example, the escalator going down from 7 to 5 would be "down57".
+                </p>
+	    </div>
+	    <div class="col-sm-5">
+		  <br \><br \>
+		  <br \><br \>
+		  <br \><br \>
+          <br \><br \>
+	    </div>
 
             <h2 id="sec00">Getting the Current Status</h2>
             <div class="col-sm-7">
-            <p>
-	      It's time to make your first API calls! This part of the guide assumes you know what an API is and how it works. it also assumes you have some type of JSON parser.
-	    </p>
+                <p>
+                    <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/status</samp> 
+                
+                </p>
 	    </div>
 	    <div class="col-sm-5">
 	      <p>
 		<samp>
-		  // Code examples will be shown in this gutter.
-		  <br \><br \>
-
 
 		  <b>Example Output:</b> <br \>
 
-		  {data: {<br \>
-		  'Hello': <br \>
-		  'world'<br \>
-		  }<br \>
-		  }
+		  {"down57": {<br \>
+		  "statuses": ["running"], <br \>
+		  "times": ["12345678"] <br \>
+		  } }
 		</samp>
 	    </div>
 
             <h2 id="sec1">Getting Past Statuses</h2>
             <div class="col-sm-7">
-            <p>Currently no authentication is needed.</p>
+                <p>You can get the 100 most recent records like this: </p>
+                <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history</samp> 
+
+                <br> You can get a specific range of historical records, though you can only fetch 1000 at a time. </p>
+                <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history?min=200&max=400</samp> 
 	    </div>
-	    <div class="col-sm-5">
-	      <p>
-		  <br \><br \>
+        <div class="col-sm-5">
+            <samp>
+              <b>Example Output:</b> <br \>
+
+              {"down57": {<br \>
+              "statuses": ["running", "running", "halted"], <br \>
+              "times": ["12345678", "12345677", "12345676"] <br \>
+              } }
+              <br \><br \>
+              <br \><br \>
+            </samp>
 	    </div>
 
             <h2 id="sec2">Errors</h2>
-	    <div class="col-sm-7">
-            <p>
-	      The STEPS API is an awesome RESTful API for tracking the escalators in Stuyvesant High School.
-	    </p>
+            <div class="col-sm-7">
+                <samp>
+                    <ul>
+                        <li>Invalid data_type: Must be empty or 'status' or 'history'"</li>
+                        <li>Invalid escalator name. Must be 'all' or direction followed by two floors, ex. 'up57'"</li>
+                        <li>Malformed max and min values"</li>
+                        <li>You can only fetch 1000 records at once."</li>
+                    </ul>
+                </samp>
 	    </div>
 	    <div class="col-sm-5">
 	      <p>
-		<samp>
-		  // Code examples will be shown in this gutter.
-		  <br \><br \>
-
-
-		  <b>API Endpoint</b> <br \>
-
-		  http://OURURLHERE.tld/api/
+          <samp>
 		</samp>
 	    </div>
         </div>
