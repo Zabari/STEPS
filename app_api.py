@@ -63,7 +63,7 @@ def verify_api_parameters(escalator, data_type, min_record, max_record):
         return api_error_message("Invalid escalator name. Must be 'all' or direction followed by two floors, ex. 'up57'")
 
     # Verify max & min values (if set)
-    if min_record != None and max_record != None:
+    if data_type == "history" and min_record != None and max_record != None:
         if not (min_record.isdigit() and max_record.isdigit()):
             return api_error_message("Malformed max and min values")
         
