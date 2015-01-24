@@ -73,6 +73,9 @@ def verify_api_parameters(escalator, data_type, min_record, max_record):
         if not (max_record >= min_record and max_record >= 0 and min_record >= 0):
             return api_error_message("Malformed max and min values")
 
+        if not (max_record - min_record + 1) <= MAX_RECORDS_AT_ONCE:
+            return api_error_message("You can only fetch %d records at once." % MAX_RECORDS_AT_ONCE)
+
     # Parameters are valid
     return None
 
