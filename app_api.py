@@ -1,5 +1,6 @@
 from flask import request, jsonify
 from flask.ext import restful
+import server
 
 #See here: https://flask-restful.readthedocs.org/en/0.3.1/quickstart.html
 
@@ -37,7 +38,19 @@ class API(restful.Resource):
             max_record = int(max_record)
 
         if data_type == "history":
+            if escalator == "all":
+                results = server.fetchHistoryIntervalAll(min_record, max_record)
+            else:
+                results = server.fetchHistoryInterval(escalator, min_record, max_record)
 
+        # Fetch current status
+        else:
+            if escalator == "all":
+                results = server.fetchHistoryIntervalAll(mini=0, maxi=0)
+            else:
+                results = server.fetchHistoryInterval(escalator, mini=0, maxi=0)
+
+        return jsonify(**results)
 
 
 def verify_api_parameters(escalator, data_type, min_record, max_record):
