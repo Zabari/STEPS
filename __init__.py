@@ -30,6 +30,10 @@ def status():
 def base():
     return render_template("base.html", title="STEPS");
 
+@app.route("/api")
+def api_doc():
+    return render_template("api.html", title="STEPS API");
+
 
 @app.route("/about")
 def about():
