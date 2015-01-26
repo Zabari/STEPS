@@ -4,11 +4,10 @@ var activeTracker = act.slice()
 var graphs = []
 var names = ["2-3","2-4","3-5","4-6","5-7","6-8","7-9"]
 var pad = 5
-var rectHeight = Math.max((window.innerHeight-65)*.06,window.innerHeight*.045)
-var fontSize = Math.min(rectHeight*5/3,window.innerWidth/15)
-var buff = Math.min(5,rectHeight/3)
 var dateSize = Math.min(window.innerWidth*.04,window.innerHeight*.075,15)
-
+var rectHeight = Math.max((window.innerHeight- 65)*.06,window.innerHeight*.045)
+var fontSize = Math.min(rectHeight*5/3,window.innerWidth/15)
+var buff = Math.min(5,rectHeight/4)
 
 for (var n = 0; n < hist.length; n++) {
     graphs[graphs.length] = [0]
@@ -16,17 +15,24 @@ for (var n = 0; n < hist.length; n++) {
 
 while (time >= tFirst) {
     for (var n = 0; n < hist.length; n++) {
+	
 	if (trackers[n] >= 0 && time < hist[n][trackers[n]]) {
 	    graphs[n][graphs[n].length] = 0
 	    trackers[n] --
+	    if (graphs[n][graphs[n].length-2] != 0)
+		graphs[n][graphs[n].length-2] += 1
+	    else
+		graphs[n][graphs[n].length-1] += 1	
 	}
-	graphs[n][graphs[n].length-1] += 1
+	else
+	    graphs[n][graphs[n].length-1] += 1  
     }
 	time -= inc;
 }
 var svgContainer = d3.select("body").append("svg")
     .attr("width", window.innerWidth-pad)
-    .attr("height", Math.abs(window.innerHeight-pad));
+    .attr("height", pad + rectHeight*14 + buff*13 + dateSize*1.2 + 60);
+    //.attr("height", Math.abs(window.innerHeight-pad+60));
 
 var date0 = svgContainer.append("text")
     .text(new Date(tFirst*1000).toDateString())
