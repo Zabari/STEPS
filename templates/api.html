@@ -13,98 +13,106 @@
         <!--left-->
         <div class="col-md-3" id="leftCol">
             <ul class="nav nav-stacked" id="sidebar">
-                <li><a href="#sec0"> About the API</a>
-                </li>
 
-		<li><a href="#sec00"> Escalator Names</a>
-        </li>
-                <li><a href="#sec1">Getting the Current Status</a>
+                <li><a href="#sec0">About the API</a>
                 </li>
-                <li><a href="#sec2">Getting Past Statuses</a>
+                <li><a href="#sec1">Escalator Names</a>
                 </li>
-                <li><a href="#sec3">Errors</a>
+                <li><a href="#sec2">Getting the Current Status</a>
+                </li>
+                <li><a href="#sec3">Getting Past Statuses</a>
+                </li>
+                <li><a href="#sec4">Errors</a>
+
             </ul>
         </div>
         <!--/left-->
 
         <!--right-->
-       <div class="col-sm-9">
+        <div class="col-sm-9">
             <h2 id="sec0">About the API</h2>
-	    <div class="col-sm-7">
-            <p>
-            The STEPS API is an awesome RESTful API for tracking the escalators in Stuyvesant High School. You get all the data that our server has access to, including the history of statuses going back to the very first measurement.
-            <br>
-            All data is returned in JSON.
-            <br>
-            No authentication is needed.
-	    </p>
-	    </div>
-	    <div class="col-sm-5">
-		<samp>
-
-		  <b>API Endpoint</b> <br \>
-
-		  http://stuysteps.nyc/api/escalators
-		  <br \><br \><br \><br \><br \>
-              <br \><br \>
-		</samp>
-	    </div>
-
-            <h2 id="sec00">Escalator Names</h2>
             <div class="col-sm-7">
                 <p>
-                Whenever an escalator name is needed, you can either say "all" or specify an escalator. The format is the direction of the escalator ("up" or "down") followed by the bottom floor followed by the top floor. For example, the escalator going down from 7 to 5 would be "down57".
+                    The STEPS API is an awesome RESTful API for tracking the escalators in Stuyvesant High School. You get all the data that our server has access to, including the history of statuses going back to the very first measurement.
+                    <br> All data is returned in JSON.
+                    <br> No authentication is needed.
                 </p>
-	    </div>
-	    <div class="col-sm-5">
-		  <br \><br \>
-		  <br \><br \>
-		  <br \><br \>
-          <br \><br \>
-	    </div>
+            </div>
+            <div class="col-sm-5">
+                <h5> API Endpoint </h5>
+                <samp>
+                    http://stuysteps.nyc/api/escalators
+                    <br><br><br><br><br><br><br>
+                </samp>
+            </div>
 
-            <h2 id="sec00">Getting the Current Status</h2>
+            <h2 id="sec1">Escalator Names</h2>
             <div class="col-sm-7">
                 <p>
-                    <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/status</samp> 
-                
+                    Whenever an escalator name is needed, you can either say "all" or specify an escalator. The format is the direction of the escalator ("up" or "down") followed by the bottom floor followed by the top floor. For example, the escalator going down from 7
+                    to 5 would be "down57".
                 </p>
-	    </div>
-	    <div class="col-sm-5">
-	      <p>
-		<samp>
+            </div>
+            <div class="col-sm-5">
+            <samp>
+                escalators_names = [  <br>
+                &nbsp; "up23", "down23",     <br>
+                &nbsp; "up24", "down24",     <br>
+                &nbsp; "up35", "down35",     <br>
+                &nbsp; "up46", "down46",     <br>
+                &nbsp; "up57", "down57",     <br>
+                &nbsp; "up68", "down68",     <br>
+                &nbsp; "up79", "down79",     <br>
+                ];
+            </samp>
+            </div>
 
-		  <b>Example Output:</b> <br \>
+            <h2 id="sec1">Methods</h2>
 
-		  {"down57": {<br \>
-		  "statuses": ["running"], <br \>
-		  "times": ["12345678"] <br \>
-		  } }
-		</samp>
-	    </div>
+            <h3 id="met0">Current Status</h3>
+            <div class="col-sm-7">
+                <p>
+                    http://stuysteps.nyc/api/escalators/&lt;escalator_name>/status
+                </p>
+            </div>
+            <div class="col-sm-5">
+                    <h5> Example Response </h5>
+                    <samp>
+                        $ curl http://stuysteps.nyc/api/escalators/down57/status
+                    </samp>
 
-            <h2 id="sec1">Getting Past Statuses</h2>
+                    <h5> Example Request </h5>
+                    <samp>
+                        {"down57": {              <br>
+                        &nbsp; "statuses": ["running"],  <br>
+                        &nbsp; "times": ["12345678"]     <br>
+                        }}
+                    </samp>
+            </div>
+
+            <h3 id="met1">Status Histories</h3>
             <div class="col-sm-7">
                 <p>You can get the 100 most recent records like this: </p>
-                <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history</samp> 
+                http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history
 
                 <br> You can get a specific range of historical records, though you can only fetch 1000 at a time. </p>
-                <samp>http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history?min=200&max=400</samp> 
-	    </div>
-        <div class="col-sm-5">
-            <samp>
-              <b>Example Output:</b> <br \>
+                http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history?min=200&amp;max=400
+            </div>
+            <div class="col-sm-5">
+                <samp>
+                    <b>Example Output:</b>
+                    <br \> {"down57": {
+                    <br \> "statuses": ["running", "running", "halted"],
+                    <br \> "times": ["12345678", "12345677", "12345676"]
+                    <br \> } }
+                    <br \>
+                    <br \>
+                    <br \>
+                    <br \>
+                </samp>
+            </div>
 
-              {"down57": {<br \>
-              "statuses": ["running", "running", "halted"], <br \>
-              "times": ["12345678", "12345677", "12345676"] <br \>
-              } }
-              <br \><br \>
-              <br \><br \>
-            </samp>
-	    </div>
-
-            <h2 id="sec2">Errors</h2>
+            <h2 id="sec3">Errors</h2>
             <div class="col-sm-7">
                 <samp>
                     <ul>
@@ -114,12 +122,12 @@
                         <li>You can only fetch 1000 records at once."</li>
                     </ul>
                 </samp>
-	    </div>
-	    <div class="col-sm-5">
-	      <p>
-          <samp>
-		</samp>
-	    </div>
+            </div>
+            <div class="col-sm-5">
+                <p>
+                    <samp>
+                    </samp>
+            </div>
         </div>
         <!--/right-->
     </div>
