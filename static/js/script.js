@@ -64,10 +64,6 @@ function setRandom() {
 }
 ********************************************/
 
-window.setInterval(function(){
-  reloadData();
-}, 2000);
-
 
 
 // SIDEBAR
