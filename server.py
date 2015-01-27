@@ -10,9 +10,9 @@ def updateDatabase(data): #Updates database with data
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     try:
-        c.execute('CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)')
-	os.system('chown -R www-data:www-data /var/www')
-	os.system('/etc/init.d/apache2 reload')
+       c.execute("CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)")
+	   os.system('chown -R www-data:www-data /var/www')
+	   os.system('/etc/init.d/apache2 reload')
     except:
         print
     for x in data["data"]:
@@ -70,19 +70,19 @@ def fetchHistoryInterval(escalator,mini, maxi):
     d[escalator]["times"]=[]
     conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
-    if mini!=0:
-        L=c.execute('SELECT status,time FROM esc WHERE name=? ORDER BY time LIMIT ?,?',(escalator,mini-1,maxi-mini+1,)).fetchAll()
-        for x in L:
-            d[escalator]["statuses"].append(x[0])
-            d[escalator]["times"].append(x[1])
-        else:
-            L=c.execute('SELECT status,time FROM esc WHERE name=? ORDER BY time LIMIT ?',(escalator,maxi-mini,)).fetchAll()
-            for x in L:
-                d[escalator]["statuses"].append(x[0])
-                d[escalator]["times"].append(x[1])
-            
-           
+
+    L=c.execute('SELECT status,time FROM esc WHERE name=? ORDER BY time LIMIT ?,?',(escalator,mini-1,maxi-mini+1,))
+    for x in L:
+        d[escalator]["statuses"].append(x[0]==1)
+        d[escalator]["times"].append(x[1])
+
     conn.close()
+    return d
+
+def fetchHistoryIntervalAll(mini,maxi):
+    d={}
+    for x in L:
+        d.update(fetchHistoryInterval(x,mini,maxi))
     return d
 def fetchTimeList(esci):
     ret=[]
@@ -96,10 +96,11 @@ def fetchTimeList(esci):
 
 
 #updateDatabase(d) #for testing
-#conn = sqlite3.connect('esc.db')
+#conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
 #c=conn.cursor()
 #print c.execute('SELECT * FROM esc WHERE name=?',("up46",)).fetchall()
 #conn.close()
 #print fetchAll() #for testing
 #print fetchAllTime()
 #print fetchStatusAll()
+#print fetchHistoryIntervalAll(1,3)
