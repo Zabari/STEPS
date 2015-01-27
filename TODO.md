@@ -17,8 +17,8 @@ TODO
     - [x] Jumper Cables
     - [x] Rotary Encoders *Note: These might take some time to come so I got an alternateve...*
  - [x] Get hardware proof of concept working at home
- - [ ] Code Website
-    - [ ] Javascript to recieve escilator data
+ - [x] Code Website
+    - [x] Javascript to recieve escilator data
     - [x] Visual output to show when stuff works/doesnt (SVG?)
     - [x] Make responsive for different screen sizes?? `FRONTEND`
     - [x] Make pretty :grin:
@@ -31,12 +31,15 @@ TODO
  - [ ] Get arduino installed on 3-5 `HARDWARE`
  - [x] Get arduino communicating with RPi `HARDWARE`
  - [x] Get RPi communicating with website `HARDWARE`
- - [ ] Make website respond to RPi post requests `BACKEND`
+ - [x] Make website respond to RPi post requests `BACKEND`
  - [x] Make graphics show changes in state `FRONTEND`
  - [x] Uptime page?? `Branch: UI`
 
 
  ####Before Due
  - [ ] Somehow show this in the atrium?!
- - [ ] Create a RESTful API if there's time.
- - [ ] Finish this todo list.
+ - [x] Create a RESTful API if there's time.
+ - [x] Finish this todo list.
+ 
+
+We're done :+1:
