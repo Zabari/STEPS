@@ -22,8 +22,33 @@ function setOFF(id) {
   path.setAttribute("fill", "red");
 };
 
+
+// We track whether the tab is active to decrease update frequency when the user isn't looking
+var isTabActive = true;
+
+// http://stackoverflow.com/a/1760283/805556
+window.onfocus = function () { 
+  isTabActive = true; 
+}; 
+
+window.onblur = function () { 
+  isTabActive = false; 
+};
+
+var timeSinceLastChecked = 0;
+
 // Fetch data from server and update page
 var reloadData = function() {
+    // If tab isn't currently active, and if we've checked in the last 8 seconds, don't check again
+    if (!isTabActive) {
+        if (timeSinceLastChecked < 8000) {
+            timeSinceLastChecked += UPDATE_FREQUENCY;
+            return;
+        }
+    }
+
+    timeSinceLastChecked = 0;
+
     $.getJSON("/getData", function(data) {
         updatePage(data);
     } );
