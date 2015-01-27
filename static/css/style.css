@@ -191,3 +191,17 @@ body > .container {
 
 
 /* -------------------------------------------- */
+
+/* ABOUT PAGE */
+.about-verylarge {
+    font-size: 52px;
+    line-height: 1.5;
+}
+
+.about-large {
+    font-size: 28px;
+}
+
+.no-padding-left {
+    padding-left: 0;
+}
