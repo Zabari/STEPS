@@ -34,7 +34,7 @@ def fetchStatusAllDic():
     return d
 def fetchTimeList(esci):
     ret=[]
-    #conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
     for i in range(len(ret)):
@@ -86,7 +86,7 @@ def fetchHistoryIntervalAll(mini,maxi):
     return d
 def fetchTimeList(esci):
     ret=[]
-    #conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
+    conn = sqlite3.connect('/var/www/FlaskApp/STEPS/esc.db')
     c=conn.cursor()
     ret=c.execute('SELECT time FROM esc WHERE name=? ORDER BY time',(L[esci],)).fetchall()
     for i in range(len(ret)):
