@@ -11,8 +11,8 @@ def updateDatabase(data): #Updates database with data
     c=conn.cursor()
     try:
        c.execute("CREATE TABLE esc (name TEXT,time REAL, status BOOLEAN)")
-	   os.system('chown -R www-data:www-data /var/www')
-	   os.system('/etc/init.d/apache2 reload')
+       os.system('chown -R www-data:www-data /var/www')
+       os.system('/etc/init.d/apache2 reload')
     except:
         print
     for x in data["data"]:
