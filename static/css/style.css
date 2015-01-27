@@ -90,11 +90,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .statusimg {
-    width: 30%;
+    width: 27%;
     height: auto;
     vertical-align: middle;
     max-width: 185px;
-    /*transform: translateY(-15%);*/
+    transform: translateY(-15%);
     }
 
 

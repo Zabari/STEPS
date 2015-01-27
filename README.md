@@ -18,15 +18,24 @@ We're starting with just one escalator, but if we're successful, we can implemen
 | Front-End Design, Hardware Programming & Design                                                         | Front-End Programming, Javascripting                         | Back-End Design                                               | *Group Organizer,* Database Programming |
 
 
+##Video
+[![YouTube Video](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+
 ##Instalation
 
 ####Requirements
-- Python with modules `Flask`,
+- Python with modules `Flask`, `Flask-RESTFul`
 - A RaspberryPi (or clone)
 - An Arduino (or clone)
 
 ####Instalation
-**To come...**
+1. Download and unpack files by either downloading zip or cloning using `git clone https://github.com/Zabari/STEPS.git`
+2. Insure you have the latest version of python installed
+3. Use pip to install `Flask`, `Flask-restful`
+4. Run server.py to create an instance of the database
+5. Run `python __init__.py` to run an instance of the website. You may need to change the location of the server in both `server.py` and `__init__.py`.
+6. If you want to have arduino and raspi modules to track, you will have to build those. More information on that later.
+7. To see the full site in action, check out [stuysteps.nyc](http://www.stuysteps.nyc)
 
 ##Timeline
 *See [TODO.md](https://github.com/Zabari/EscalatorHaus/blob/master/TODO.md).*
