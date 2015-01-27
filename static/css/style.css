@@ -122,6 +122,13 @@ a:hover, a:active {
     color: #2a9fd6;
 }
 
+/* LINKS ON HOMEPAGE */
+.homepage-links a {
+    color: #fff;
+    font-size: 36px;
+    display: block;
+}
+
 /* Sticky footer styles */
 
 html {
