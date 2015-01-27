@@ -64,7 +64,7 @@ def api_doc():
 
 @app.route("/about")
 def about():
-    return render_template("about.html", title="STEPS");
+    return render_template("about.html", title="About STEPS");
 
 @app.route("/contact")
 def contact():
