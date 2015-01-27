@@ -19,7 +19,7 @@ We're starting with just one escalator, but if we're successful, we can implemen
 
 
 ##Video
-[![YouTube Video](http://img.youtube.com/vi/xoU7kB2jkI8/0.jpg)](http://www.youtube.com/watch?v=xoU7kB2jkI8)
+[![YouTube Video](http://img.youtube.com/vi/xoU7kB2jkI8/0.jpg)](https://www.youtube.com/watch?v=apEwjlbcmhs)
 
 ##Instalation
 
