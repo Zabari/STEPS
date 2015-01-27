@@ -16,10 +16,15 @@
 
                 <li><a href="#sec0">About the API</a>
                 </li>
-                <li><a href="#sec1">Escalator Names</a>
-                </li>
-                <li><a href="#sec2">Getting the Current Status</a>
-                </li>
+                <li><a href="#sec1">Escalator Names</a> </li>
+                <li><a href="#sec2">Methods</a> </li>
+                <ul>
+                    <li><a href="#met0"> Current Status </a>
+                    </li>
+                    <li><a href="#met1"> Current Status </a>
+                    </li>
+
+                </ul>
                 <li><a href="#sec3">Getting Past Statuses</a>
                 </li>
                 <li><a href="#sec4">Errors</a>
@@ -42,7 +47,13 @@
                 <h5> API Endpoint </h5>
                 <samp>
                     http://stuysteps.nyc/api/escalators
-                    <br><br><br><br><br><br><br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </samp>
             </div>
 
@@ -54,61 +65,73 @@
                 </p>
             </div>
             <div class="col-sm-5">
-            <samp>
-                escalators_names = [  <br>
-                &nbsp; "up23", "down23",     <br>
-                &nbsp; "up24", "down24",     <br>
-                &nbsp; "up35", "down35",     <br>
-                &nbsp; "up46", "down46",     <br>
-                &nbsp; "up57", "down57",     <br>
-                &nbsp; "up68", "down68",     <br>
-                &nbsp; "up79", "down79",     <br>
-                ];
-            </samp>
+                <samp>
+                    escalators_names = [
+                    <br> &nbsp; "up23", "down23",
+                    <br> &nbsp; "up24", "down24",
+                    <br> &nbsp; "up35", "down35",
+                    <br> &nbsp; "up46", "down46",
+                    <br> &nbsp; "up57", "down57",
+                    <br> &nbsp; "up68", "down68",
+                    <br> &nbsp; "up79", "down79",
+                    <br> ];
+                </samp>
             </div>
 
             <h2 id="sec1">Methods</h2>
 
-            <h3 id="met0">Current Status</h3>
+            <h4 id="met0">Current Status</h4>
             <div class="col-sm-7">
                 <p>
                     http://stuysteps.nyc/api/escalators/&lt;escalator_name>/status
                 </p>
             </div>
             <div class="col-sm-5">
-                    <h5> Example Response </h5>
-                    <samp>
-                        $ curl http://stuysteps.nyc/api/escalators/down57/status
-                    </samp>
+                <samp>
+                    $ curl stuysteps.nyc/api/escalators/down57/status
+                </samp>
 
-                    <h5> Example Request </h5>
-                    <samp>
-                        {"down57": {              <br>
-                        &nbsp; "statuses": ["running"],  <br>
-                        &nbsp; "times": ["12345678"]     <br>
-                        }}
-                    </samp>
+                <h5> Example Response </h5>
+                <samp>
+                    {"down57": {
+                    <br> &nbsp; "statuses": ["running"],
+                    <br> &nbsp; "times": ["12345678"]
+                    <br> }}
+                </samp>
             </div>
 
-            <h3 id="met1">Status Histories</h3>
+            <h4 id="met1">Status Histories</h4>
             <div class="col-sm-7">
                 <p>You can get the 100 most recent records like this: </p>
                 http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history
 
-                <br> You can get a specific range of historical records, though you can only fetch 1000 at a time. </p>
+                <br> You can get a specific range of historical records, though you can only fetch 1000 at a time. This limitation is to prevent overstraining our server. </p>
                 http://stuysteps.nyc/api/escalators/&lt;escalator_name>/history?min=200&amp;max=400
+                <br>
+                <br> All times are in miliseconds, Unix standard time.
             </div>
             <div class="col-sm-5">
                 <samp>
-                    <b>Example Output:</b>
-                    <br \> {"down57": {
-                    <br \> "statuses": ["running", "running", "halted"],
-                    <br \> "times": ["12345678", "12345677", "12345676"]
-                    <br \> } }
-                    <br \>
-                    <br \>
-                    <br \>
-                    <br \>
+                    $ curl stuysteps.nyc/api/escalators/up35/history?min=0&amp;max=3
+                </samp>
+
+                <h5> Example Response </h5>
+                <samp>
+                    { {
+                    <br> &nbsp; up35: {
+                    <br> &nbsp; &nbsp; statuses: [
+                    <br> &nbsp; &nbsp; &nbsp; false,
+                    <br> &nbsp; &nbsp; &nbsp; false,
+                    <br> &nbsp; &nbsp; &nbsp; true
+                    <br> &nbsp; &nbsp; &nbsp; ],
+                    <br> &nbsp; &nbsp; &nbsp; times: [
+                    <br> &nbsp; &nbsp; &nbsp; 1421947844.034484,
+                    <br> &nbsp; &nbsp; &nbsp; 1421947868.721245,
+                    <br> &nbsp; &nbsp; &nbsp; 1421947904.061175
+                    <br> &nbsp; &nbsp; ]
+                    <br> &nbsp; }
+                    <br> }
+                    <br>
                 </samp>
             </div>
 
